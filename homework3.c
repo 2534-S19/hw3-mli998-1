@@ -19,10 +19,10 @@ int main(void)
     initGPIO();
     // Initialize Timer0 to provide a one second count interval for updating LED2.
     // YOU MUST WRITE THIS FUNCTION IN myTimer.c
-    initTimer(TIMER32_0_BASE, TIMER0_PRESCALER, TIMER0_COUNT);
+    initTimer(TIMER0, TIMER0_PRESCALER, TIMER0_COUNT);
     // Initialize Timer1 to provide a one millisecond count interval for updating the button history.
     // YOU MUST WRITE THIS FUNCTION IN myTimer.c
-    initTimer(TIMER32_1_BASE, TIMER1_PRESCALER, TIMER1_COUNT);
+    initTimer(TIMER1, TIMER1_PRESCALER, TIMER1_COUNT);
 
     while(1)
     {
@@ -71,7 +71,36 @@ void changeLaunchpadLED2(unsigned int count)
 // This is essentially a copy of the previous function, using a different LED
 void changeBoosterpackLED(unsigned int count)
 {
+    turnOff_LauchpadLED2Blue();
+    turnOff_LauchpadLED2Red();
+    turnOff_LauchpadLED2Green();
+    switch(count%8)
+    {
+    case 1:
+        turnOn_BoosterpackLEDRed();
+        break;
+    case 2:
+        turnOn_BoosterpackLEDGreen();
+        break;
+    case 3:
+        turnOn_BoosterpackLEDBlue();
+        break;
+    case 4:
+        turnOn_BoosterpackLEDRed();
+        turnOn_BoosterpackLEDGreen();
+        break;
+    case 5:
+        turnOn_BoosterpackLEDBlue();
+        turnOn_BoosterpackLEDRed();
+        break;
+    case 6:
+        turnOn_BoosterpackLEDBlue();
+        turnOn_BoosterpackLEDGreen();
+        break;
+    case 7:
 
+
+    }
 }
 
 // TODO: Create a button state machine.
@@ -79,6 +108,11 @@ void changeBoosterpackLED(unsigned int count)
 bool fsmBoosterpackButtonS1(unsigned int buttonhistory)
 {
     bool pressed = false;
+    switch()
+    {
+    case 1:
+
+    }
 
 
     return pressed;
